@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   def current_player
     if session[:player_id]
       Player.find { |p| p.id == session[:player_id] }
-      true
     else
       false
     end
