@@ -7,6 +7,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'factory_girl_rails'
 
+Dir[Rails.root.join("spec/concerns/**.rb")].each { |f| require f }
+
 ActiveRecord::Migration.maintain_test_schema!
 
 Shoulda::Matchers.configure do |config|

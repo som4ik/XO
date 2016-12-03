@@ -1,4 +1,6 @@
 class Game < ApplicationRecord
+  include BoardScanner
+
   serialize :statistics
   enum status: [:pending, :in_porgress, :finished]
 
