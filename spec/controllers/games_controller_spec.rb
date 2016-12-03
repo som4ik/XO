@@ -10,6 +10,8 @@ RSpec.describe GamesController, type: :controller do
   describe "GET :show method" do
     it "should render show template" do
       game = FactoryGirl.create(:game, status: 0)
+      game.players << Player.last
+      game.save
       get :show, params: {id: game.id}
       expect(response.code).to eq('200')
       expect(response).to render_template(:show)
