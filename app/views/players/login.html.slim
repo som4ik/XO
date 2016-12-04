@@ -1,3 +1,5 @@
-= simple_form_for @player, url: login_players_path do |f|
-  = f.input :name
-  = f.submit
+.login
+  = simple_form_for @player do |f|
+    h3 Welcome to XO enter your name here
+    = f.input :name, class: 'form-control col-md-5', placeholder: 'Saidak', label: false
+    = f.submit 'GO', class: 'btn btn-success col-md-12'

@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe GamesController, type: :controller do
+    let!(:player) { FactoryGirl.create :player }
 
   before :each do
-    player = FactoryGirl.create :player
     session[:player_id] = player.id
   end
 
   describe "GET :show method" do
     it "should render show template" do
       game = FactoryGirl.create(:game, status: 0)
-      game.players << Player.last
+      game.players << player
       game.save
       get :show, params: {id: game.id}
       expect(response.code).to eq('200')
@@ -37,7 +37,21 @@ RSpec.describe GamesController, type: :controller do
       post :create
       game = Game.last
       expect(game.players).to_not eq(0)
-      expect(game.players).to include(Player.last)
+      expect(game.players).to include(player)
+    end
+  end
+
+  describe "GET :join" do
+    let!(:game)  {FactoryGirl.create(:game, status: 0)}
+
+    before :each do
+      player = FactoryGirl.create(:player)
+      game.players << Player.last
+      get :join, params: {id: game}
+    end
+
+    it "should add player to players" do
+      expect(game.players.count).to eq(2)
     end
   end
 end

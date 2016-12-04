@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_players_path unless current_player
   end
 
+  private
+
   def current_player
     if session[:player_id]
       Player.find { |p| p.id == session[:player_id] }
@@ -12,4 +14,6 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+  helper_method :current_player
 end

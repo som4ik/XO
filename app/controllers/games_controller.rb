@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
+
   before_action :authenticate_player
   before_action :set_game, only: [:show, :join]
   before_action :is_game_player, only: [:show]
+
   def index
   end
 
@@ -9,8 +11,8 @@ class GamesController < ApplicationController
   end
 
   def join
-    return root_path if @game.is_full?
-    @game.accept_player current_player
+    return root_path if !@game.accept_player current_player
+    @game.update(status: 1)
     redirect_to game_path(id: @game.id)
   end
 
@@ -18,6 +20,10 @@ class GamesController < ApplicationController
     @game = Game.create
     @game.accept_player current_player
     redirect_to game_path(id: @game.id)
+  end
+
+  def click
+
   end
 
   private
