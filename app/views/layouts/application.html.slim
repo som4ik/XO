@@ -8,6 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .container
-      p.notice= notice
-      p.alert= alert
+      br
+      br
+      - if current_player
+        = link_to "#{current_player.name}, Go with Other account", player_logout_path(current_player), method: :post, class: 'btn btn-danger right'
       = yield

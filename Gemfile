@@ -33,6 +33,7 @@ group :development do
 end
 
 group :test do
+  gem 'rack_session_access'
   gem 'rails-controller-testing'
   gem 'poltergeist'
   gem 'capybara'

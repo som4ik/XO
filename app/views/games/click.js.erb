@@ -1,0 +1,3 @@
+<%-if @check_status == "next"%>
+  $('.board').html("<%= j render(partial: 'board_box', locals: { game: @game }) %>");
+<%end%>

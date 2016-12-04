@@ -13,6 +13,11 @@ class PlayersController < ApplicationController
     end
   end
 
+  def destroy
+    session[:player_id] = nil
+    redirect_to root_path
+  end
+
   private
 
   def player_params

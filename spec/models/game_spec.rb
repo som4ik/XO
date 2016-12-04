@@ -4,6 +4,7 @@ RSpec.describe Game, type: :model do
     let!(:game) {FactoryGirl.create :game}
     let!(:player_1) {FactoryGirl.create :player }
     let!(:player_2) {FactoryGirl.create :player }
+
   it_behaves_like "board_scanner"
 
   describe "vaild game elements " do
@@ -19,7 +20,7 @@ RSpec.describe Game, type: :model do
       game.players << player_1 << player_2
       game.save
       game.players << FactoryGirl.create(:player)
-      expect(game).to_not be_valid
+      expect(game.valid?).to eq(false)
     end
   end
 

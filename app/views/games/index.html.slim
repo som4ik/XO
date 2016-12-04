@@ -1,4 +1,17 @@
+= link_to 'Refresh', root_path, class: 'btn btn-success'
+br/
+br
+= button_to 'Start New Game', games_path, class: 'btn btn-success'
 ul.unstyled-list
-  - @games.on_going.each do |game|
-    .row
-      - if game.is_full?
+  - @games.each do |game|
+    .row.col-md-2.box
+      - if game.pending?
+        p #{game.players.last.name} is waiting for other player to join
+        - if game.game_player?(current_player)
+          = link_to 'Back to Game', game_path(id: game.id), class: 'btn btn-primary'
+        - else
+          = link_to 'Join now', join_games_path(id: game.id), class: 'btn btn-success'
+      - else
+        p Game in porgress #{game.players.first.name} vs. #{game.players.second.name}
+        - if game.game_player?(current_player)
+          = link_to 'Back to Game', game_path(id: game.id), class: 'btn btn-primary'

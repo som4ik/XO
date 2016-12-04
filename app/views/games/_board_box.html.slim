@@ -1,0 +1,11 @@
+.board
+  h4.status = show_status(@game)
+  - if current_player.mark(@game).present?
+    h5 Your Mark is #{current_player.mark(@game)}
+  ul.unstyled-list
+    - (1..3).each do |r|
+
+      li.btn-li
+        - (1..3).each do |c|
+          = board_btn(@game, r, c)
+      br

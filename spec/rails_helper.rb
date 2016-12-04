@@ -6,6 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'factory_girl_rails'
+require "rack_session_access/capybara"
 
 Dir[Rails.root.join("spec/concerns/**.rb")].each { |f| require f }
 Dir[Rails.root.join("spec/support/**.rb")].each { |f| require f }

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
   end
   resources :players, only: [:create] do
+    post 'logout' => :destroy
     collection do
       get :login
     end

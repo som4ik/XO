@@ -54,4 +54,24 @@ RSpec.describe GamesController, type: :controller do
       expect(game.players.count).to eq(2)
     end
   end
+
+  describe "POST :click" do
+    before :each do
+      @game = Game.create(status: 0, winner: nil, turn: nil)
+      @p1 = FactoryGirl.create(:player)
+      @p2 = FactoryGirl.create(:player)
+      @game.round_players.create(player_id: @p1.id)
+      @game.round_players.create(player_id: @p2.id)
+    end
+
+    it "sould give response 200" do
+      @game.statistics = { 1=>{1=>"O", 2=>"", 3=>"O"},
+                          2=>{1=>"O", 2=>"X", 3=>"X"},
+                          3=>{1=>"", 2=>"X", 3=>""}
+                        }
+      session[:player_id] = @p1.id
+      post :click, params: { position: "1:2", id: @game.id}, xhr: true
+      expect(response.code).to eq('200')
+    end
+  end
 end
