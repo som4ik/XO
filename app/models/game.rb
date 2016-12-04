@@ -1,16 +1,18 @@
 class Game < ApplicationRecord
   include BoardScanner
   include Notifyer
+
   serialize :statistics
   enum status: {pending: 0, in_porgress: 1, finished: 2}
 
   scope :on_going, -> { where.not(status: 2).order(created_at: :desc)}
-  before_create :set_statisitics
 
-  validate :max_players_count
+  before_create :set_statisitics
 
   has_many :round_players, dependent: :destroy
   has_many :players, through: :round_players, foreign_key: :game_id, dependent: :destroy
+
+  validate :max_players_count
 
   def is_full?
     players.count == 2

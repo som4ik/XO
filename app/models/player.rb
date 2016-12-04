@@ -1,8 +1,9 @@
 class Player < ApplicationRecord
-  validates :name, presence: true
 
   has_many :round_players, dependent: :destroy
   has_many :games, through: :round_players, foreign_key: :player_id, dependent: :destroy
+
+  validates :name, presence: true
 
   def your_turn(game)
     return true if self.id == game.turn
