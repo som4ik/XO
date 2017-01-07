@@ -26,7 +26,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
-  config.action_cable.allowed_request_origins = ["http://http://139.59.14.152/"]
+  config.action_cable.allowed_request_origins = ["http://139.59.14.152:3333"]
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
