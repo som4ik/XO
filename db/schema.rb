@@ -36,10 +36,7 @@ ActiveRecord::Schema.define(version: 20161204010127) do
     t.string   "mark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_round_players_on_game_id", using: :btree
-    t.index ["player_id"], name: "index_round_players_on_player_id", using: :btree
+    t.index ["player_id", "game_id"], name: "index_round_players_on_player_id_and_game_id", unique: true, using: :btree
   end
 
-  add_foreign_key "round_players", "games"
-  add_foreign_key "round_players", "players"
 end

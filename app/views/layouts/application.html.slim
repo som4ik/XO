@@ -6,6 +6,32 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    javascript:
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter41980049 = new Ya.Metrika({
+                      id:41980049,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true,
+                      webvisor:true,
+                      trackHash:true
+                  });
+              } catch(e) { }
+          });
+
+          var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks");
   body
     .container
       br
@@ -13,3 +39,7 @@ html
       - if current_player
         = link_to "#{current_player.name}, Go with Other account", player_logout_path(current_player), method: :post, class: 'btn btn-danger right'
       = yield
+    div
+      img alt="" src="https://mc.yandex.ru/watch/41980049" style=("position:absolute; left:-9999px;")
+
+
