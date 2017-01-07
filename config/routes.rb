@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
   resources :games, only: [:show, :create] do
     collection do
       get  :join
