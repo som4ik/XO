@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 
 gem 'simple_form'
 gem 'slim-rails'
