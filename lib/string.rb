@@ -1,5 +1,5 @@
 class String
   def remove_double_dot
-    self.split(':').join('')
+    self.delete(":")
   end
 end
